@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MvcVideoGames.Models;
+using MvcVideoGames.Models.Home;
 
 namespace MvcVideoGames.Controllers
 {
@@ -32,6 +33,13 @@ namespace MvcVideoGames.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpGet]
+        public IActionResult Login(string returnUrl = "")
+        {
+            var model = new LoginViewModel { ReturnUrl = returnUrl };
+            return View(model);
         }
     }
 }
